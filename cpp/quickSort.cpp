@@ -7,30 +7,50 @@ using namespace std;
 // Partition function: Moves pivot to correct position
 int partition(vector<int>& arr, int left, int right) {
     int pivot = arr[right];  // Choose last element as pivot
-    cout<<endl<<"The pivot number is: "<<pivot<<" which was on end position "<<right<<endl;
+    cout<<endl<<"The pivot number is: "<<pivot<<", which is on end position "<<right<<endl;
     int pIndex = left;       // Tracks where pivot should go
 
     cout<<"The start of the current segment is: "<<left<<endl;
 
     for (int i = left; i < right; i++) {
         if (arr[i] < pivot) {
-            swap(arr[i], arr[pIndex]);
+            if(arr[i]!=arr[pIndex]){
+                cout<<"Swap "<<arr[i]<<" with "<<arr[pIndex]<<endl;
+                swap(arr[i], arr[pIndex]);
+            }
+            cout<<"Item on position "<<pIndex<<" checked. Next"<<endl;
             pIndex++;
         }
     }
-    swap(arr[pIndex], arr[right]);  // Place pivot in correct position
-    cout<<"Number "<<arr[pIndex]<<" is getting swapped with "<<arr[right]<<" from position "<<pIndex<<" to position "<<right<<endl;
+    
+    if(arr[right]!=arr[pIndex]){
+        cout<<"Number "<<arr[pIndex]<<" is getting swapped with "<<arr[right]<<" from position "<<pIndex<<" to position "<<right<<endl;
+        swap(arr[pIndex], arr[right]);  // Place pivot in correct position
+    }
+    else
+        cout<<"Nothing changes"<<endl;
+
+    for(int i=0;i<arr.size();i++)
+        cout<<"On position "<<i<<" is the value "<<arr[i]<<"; arr["<<i<<"]="<<arr[i]<<endl;
+    cout<<endl;
+
     return pIndex;
 }
 
 void quickSort(vector<int>& arr, int left, int right) {
     if (left < right) {
         int pIndex = partition(arr, left, right);  // Basically sorting the sub-segment 
+        if (left < pIndex-1) {
+        cout<<"Analyze array interval ["<<left<<", "<<pIndex-1<<"]."<<endl;
         quickSort(arr, left, pIndex - 1);         // Apply the same command on left subarray
+        }
+        if (pIndex+1 < right) {
+        cout<<"Analyze array interval ["<<pIndex+1<<", "<<right<<"]."<<endl;
         quickSort(arr, pIndex + 1, right);        // Same fate happens on the right subarray
+        }
     }
     else
-        cout<<endl<<"Ups, our division went too far: left Position = right Position = "<<left<<endl<<endl;
+        cout<<"Segment start position = "<<left<<endl<<endl;
 }
 
 int main() {
@@ -78,13 +98,8 @@ int main() {
 
     cout<<endl<<"The QuickSort begins here."<<endl;
 
+    cout<<"Analyze array interval ["<<0<<", "<<arr.size() - 1<<"]."<<endl;
     quickSort(arr, 0, arr.size() - 1);
-
-    cout<<endl<<"And the QuickSort ends here."<<endl;
-
-    cout <<endl<< "Sorted array: ";
-    for(int i=0;i<n;i++)
-        cout<<"On position "<<i<<" is the value "<<arr[i]<<"; arr["<<i<<"]="<<arr[i]<<endl;
 
     return 0;
 }
