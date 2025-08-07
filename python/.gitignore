@@ -1,0 +1,90 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE Files
+*.swp
+*~
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Dependency Directories
+node_modules/
+bower_components/
+vendor/
+.pnpm/
+
+# Build Artifacts
+dist/
+build/
+out/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Logs and Databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# Environment Files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Cache Directories
+.cache/
+.temp/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Package Manager Files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Misc
+*.bak
+*.tmp
+*.pid
+*.seed
+*.pid.lock
+
+#Custom
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# C/C++
+*.o
+*.a
+*.out
+
+# Ruby
+*.gem
+.bundle/
+
+*.bsp
+astro_logs/
